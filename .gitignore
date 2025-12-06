@@ -1,0 +1,16 @@
+# Виртуальное окружение
+.venv/
+
+# Кеши Python
+__pycache__/
+
+# Кеши Jupyter
+.ipynb_checkpoints/
+
+# Логи и папка mlflow
+mlruns/
+
+artifacts/
+
+# Сырые данные
+data/raw/
