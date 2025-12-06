@@ -1,0 +1,27 @@
+model:
+  path: "artifacts/models/model_v2.joblib"   # будем использовать лучшую v2-модель
+  preprocessing_version: "v2"
+
+features:
+  numeric:
+    - model_year
+    - milage_num
+    - engine_hp
+    - engine_liters
+  categorical:
+    - brand
+    - model
+    - fuel_type
+    - engine
+    - transmission
+    - ext_col
+    - int_col
+    - accident
+    - clean_title
+
+preprocessing:
+  fillna_categorical: "Unknown"
+
+api:
+  host: "0.0.0.0"
+  port: 8000
