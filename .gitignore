@@ -7,10 +7,3 @@ __pycache__/
 # Кеши Jupyter
 .ipynb_checkpoints/
 
-# Логи и папка mlflow
-mlruns/
-
-artifacts/
-
-# Сырые данные
-data/raw/.DS_Store
