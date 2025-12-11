@@ -13,4 +13,4 @@ mlruns/
 artifacts/
 
 # Сырые данные
-data/raw/
+data/raw/.DS_Store
