@@ -1,0 +1,22 @@
+artifact_path: /Users/vladimirbaranov/used-cars-mlops/mlruns/1/models/m-84c2df31a19c4cfca6c694f08d28bed5/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.14.0
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.7.0
+model_id: m-84c2df31a19c4cfca6c694f08d28bed5
+model_size_bytes: 55336938
+model_uuid: m-84c2df31a19c4cfca6c694f08d28bed5
+prompts: null
+run_id: 34f1f9d9fea84ca6b3818c8a9be0c404
+utc_time_created: '2025-12-06 21:15:39.072575'
