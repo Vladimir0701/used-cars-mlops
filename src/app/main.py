@@ -67,11 +67,6 @@ def add_numeric_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def add_engine_features(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Извлекаем числовые признаки из текстового столбца engine:
-    - engine_hp: число перед 'HP'
-    - engine_liters: число перед 'L' или 'Liter'
-    """
     df = df.copy()
 
     engine_hp = []
@@ -101,13 +96,7 @@ def add_engine_features(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def preprocess_request(df_raw: pd.DataFrame) -> pd.DataFrame:
-    """
-    Полный препроцессинг входных данных:
-    - milage -> milage_num
-    - при версии v2 -> engine_hp и engine_liters
-    - заполнение пропусков в категориальных
-    - выбор колонок в правильном порядке
-    """
+    # Полный препроцессинг входных данных
     df = df_raw.copy()
 
     # milage_num
@@ -130,12 +119,10 @@ def preprocess_request(df_raw: pd.DataFrame) -> pd.DataFrame:
         if col not in df.columns:
             raise ValueError(f"Ожидаемый числовой признак '{col}' отсутствует во входных данных")
 
-    # формируем X в нужном порядке
     X = df[numeric_features + categorical_features].copy()
     return X
 
 
-# ---------- СОЗДАЁМ FASTAPI-ПРИЛОЖЕНИЕ ----------
 
 app = FastAPI(
     title="Used Cars Price Prediction API",
@@ -147,23 +134,16 @@ app = FastAPI(
 
 @app.get("/health")
 def health():
-    """
-    Эндпоинт для проверки, что сервис жив.
-    """
     return {"status": "ok"}
 
 
 @app.post("/predict", response_model=PredictResponse)
 def predict(request: PredictRequest) -> PredictResponse:
-    """
-    Эндпоинт для предсказания цены.
-    Принимает список автомобилей, возвращает список цен.
-    """
+
     # Преобразуем входные данные в DataFrame
     objects = [obj.dict() for obj in request.objects]
     df_raw = pd.DataFrame(objects)
 
-    # Препроцессинг
     X = preprocess_request(df_raw)
 
     preds = model.predict(X)
