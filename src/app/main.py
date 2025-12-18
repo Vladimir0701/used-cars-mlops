@@ -139,8 +139,8 @@ def preprocess_request(df_raw: pd.DataFrame) -> pd.DataFrame:
 
 app = FastAPI(
     title="Used Cars Price Prediction API",
-    description="Сервис для предсказания цены подержанных автомобилей",
-    version="1.0.0",
+    description="Сервис для предсказания цены подержанных автомобилей"
+
 )
 
 
